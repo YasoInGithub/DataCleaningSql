@@ -1,5 +1,3 @@
-# DataCleaningSql
-Cleaning data for analysis using SQL
 # SQL Data Cleaning Project
 
 ## Project Overview
@@ -23,9 +21,10 @@ Using SQL's `ROW_NUMBER()` function, we can assign unique row numbers to each du
 
 Example:
 ```sql
-WITH RankedData AS (
-    SELECT *, ROW_NUMBER() OVER (PARTITION BY id, name ORDER BY date) AS row_num
-    FROM your_table
-)
-DELETE FROM your_table
-WHERE id IN (SELECT id FROM RankedData WHERE row_num > 1);
+with duplicate_cte as 
+(
+select *,
+row_number() over
+(partition by company, location, industry, total_laid_off, percentage_laid_off, 
+`date`, stage, country, funds_raised_millions) as row_num
+from layoffs_staging;
