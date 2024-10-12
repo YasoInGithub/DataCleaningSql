@@ -27,4 +27,22 @@ select *,
 row_number() over
 (partition by company, location, industry, total_laid_off, percentage_laid_off, 
 `date`, stage, country, funds_raised_millions) as row_num
-from layoffs_staging;
+from layoffs_staging;)
+```
+### 2. Data Formatting
+
+Ensure consistency in formatting across different columns:
+
+- **Dates**: Convert to a standard date format (e.g., `YYYY-MM-DD`).
+- **Text**: Trim unnecessary spaces and standardize the case (e.g., UPPERCASE for country names).
+- **Numeric Values**: Ensure numbers are correctly formatted without extra characters.
+
+### Example:
+
+```sql
+-- select company, TRIM(company)
+from layoffs_staging2;
+
+update layoffs_staging2
+set company = trim(company);
+```
