@@ -46,3 +46,10 @@ from layoffs_staging2;
 update layoffs_staging2
 set company = trim(company);
 ```
+### Future Enhancements
+Automate the data cleaning process using stored procedures or triggers.
+Integrate this process with a broader ETL (Extract, Transform, Load) pipeline for continuous data processing.
+
+### Conclusion
+This SQL data cleaning process ensures that your dataset is free from duplicates, missing values, and formatting inconsistencies. By cleaning your data, you can improve the accuracy and reliability of any analysis or reporting that follows.
+
